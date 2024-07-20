@@ -1,0 +1,17 @@
+{% include 'header.html' %}
+{% load static %}
+<div>
+    {% include 'navbar.html' %}
+</div>
+
+<div class="container mt-5">
+    <div style="background-color: rgb(190, 250, 211); width: 500px; margin: 0px auto; padding: 40px; border-radius: 10px; box-shadow: 2px 2px 3px 3px rgb(218, 247, 228);" class="">
+        <h4 style="font-weight: bold; color: green; " class="text-center">Your appointment is Successfully Placed</h4>
+
+        <div style="margin: 0px 170px">
+            <a  href="{% url 'Home' %}" class="mt-5 btn btn-primary text-white">Done</a>
+        </div>
+        
+    </div>
+    
+</div>

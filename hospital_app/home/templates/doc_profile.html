@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+{% load static %}
+<div>
+    {% include 'navbar.html' %}
+</div>
+
+<div class="container">
+    <div class="mx-auto border p-5" style="width: 600px; margin-top: 70px; border-radius: 10px;">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <p{% if message.tags %} class="text-{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+        <h2>Doctor Login:</h2>
+    <hr>
+
+    <form class="mx-auto" style="width: 400px;" method="post" action="">
+        {% csrf_token %}
+
+        <label for="name">ID:</label>
+        <input class="form-control" type="text" name="name" required>
+
+        <br>
+
+        <label for="password">Password:</label>
+        <input class="form-control" type="password" name="password" required>
+
+        <br>
+
+        <input class="btn btn-success" id="login_btn" type="submit" value="Login">
+    </form>
+    </div>
+</div>

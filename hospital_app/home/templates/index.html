@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital</title>
+    {% include 'header.html' %}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    {% load static %}
+
+    <style>
+        #div1 {
+            background-color: rgb(162, 244, 253);
+        }
+
+        #img1 {
+            width: 80%;
+        }
+
+        #btn_mp {
+            background-color: rgb(30, 96, 229);
+            padding: 10px;
+            color: white;
+        }
+
+        #card {
+            background-color: rgb(227, 249, 252);
+            color: black;
+            
+            text-decoration: none;
+            cursor: pointer;
+            
+        }
+        #card:hover{
+            position: relative;
+            bottom: 10px;
+            transition: 5s;
+        }
+
+        
+        #cbtn{
+            background-color: #4796e6;
+            color: white;
+            padding: 7px;
+            border-radius: 10px;
+            border: none;
+        }
+        #cp{
+            color:black;
+        }
+    </style>
+    {% include 'navbar.html' %}
+
+    <div id="div1">
+        <div id="div1" class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-6">
+                    <div style="margin: 100px 0px 50px 100px;">
+                        <h2 style="font-weight: bold;">Trust your health <br>
+                            only to the best professionals</h2>
+                        <p>All team members at Medical <br> Center have
+                            been trained to assist in any situation</p>
+                        <br>
+
+                        <a href="#appoint" id="btn_mp" class="btn">Make An Appointment</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-6">
+                    <img id="img1" data-aos="fade-left" data-aos-duration="1000"  src="{% static 'img/h2.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mb-5">
+        <div class="container p-2 mt-5">
+            <div id="tc" class="text-center">
+                <h4 style="font-weight: bold;">Consult Top Doctors By Speciality For Any Health Concern</h4>
+                <span>Instant Online Appointment Booking With Top Doctors</span>
+            </div>
+
+            <div id="appoint" class="row mt-5 border p-4">
+                {% for item in catagory %}
+
+                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" class="col-lg-3 col-md-4 mb-3">
+                    <a href="{% url 'Doctors' item.type %}" id="card" class="card" style="width:260px; height: 340px; ">
+                        <img class="card-img-top" src="{{item.image.url}}" alt="Card image"
+                            style="width:65%; margin: 0px auto;">
+                        <div class="card-body" style="margin-top: -20px;">
+                            <h5 class="card-title text-center">{{item.type}}</h4>
+                            <p id="cp"  class="card-text">{{item.description}}</p>
+                        </div>
+                        <div class="text-center">
+                            <button id="cbtn" class="mb-2">Book Appointment</button>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+                <div data-aos="zoom-in" data-aos-duration="1000" class="col-lg-3 col-md-4 mb-5">
+                    <a  id="card" class="card" style="width:260px; height: 340px; ">
+                        <img class="card-img-top" src="{% static 'img/lr.png' %}" alt="Card image"
+                            style="width:60%; margin: 0px auto;">
+                        <div class="card-body" style="margin-top: px;">
+                            <h5 class="card-title text-center">Lab Test Reports</h4>
+                            <p id="cp" class="card-text">Chech Status and Downlode Your Test Reports in your Mobile</p>
+                        </div>
+                        <div class="text-center">
+                            <button id="cbtn" class="mb-2">Chech Status</button>
+                        </div>
+                    </a>
+                </div>
+
+                <div data-aos="zoom-in" data-aos-duration="1000" class="col-lg-3 col-md-4 mb-5">
+                    <a href="{% url 'all_patient' %}" id="card" class="card" style="width:260px; height: 340px; ">
+                        <img class="card-img-top" src="{% static 'img/l1.png' %}" alt="Card image"
+                            style="width:60%; margin: 0px auto;">
+                        <div class="card-body" style="margin-top: px;">
+                            <h5 class="card-title text-center">EHR</h4>
+                            <p id="cp" class="card-text">Check all patients records in this hospital</p>
+                        </div>
+                        <div class="text-center">
+                            <button id="cbtn" class="mb-2">Chech Status</button>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+</body>
+
+</html>

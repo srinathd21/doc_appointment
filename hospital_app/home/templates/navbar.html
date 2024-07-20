@@ -1,0 +1,57 @@
+<style>
+    
+    #img {
+        width: 50px;
+    }
+    #ul li{
+        margin-right: 50px;
+    
+    }
+    #ul li a{
+        color: rgb(6, 6, 6);
+    }
+    .navbar{
+        background-color: #ffffff;
+        color: white;
+        border-bottom: 1px solid rgb(198, 197, 197) ;
+    }
+</style>
+{% load static %}
+<nav class="navbar navbar-expand-sm navbar-dark mb-3">
+    <div class="container">
+        <div class="navbar-brand d-flex" style="margin-right: 100px;">
+            <div>
+                <img id="img" src="{% static 'img/logo.png' %}" alt="">
+            </div>
+            <div style="margin-left: 10px;">
+                <p style="font-size: 15px; font-weight: bold; color: rgb(10, 7, 7);">Hospital Name <br>Health care
+                </p>
+            </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center" id="collapsibleNavbar">
+            <ul id="ul" class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#appoint">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact us</a>
+                </li>
+
+            </ul>
+            <div>
+                <a class="btn text-white" id="dashboard" style="background-color: #178fe5; color: white; margin-right: 5px;" href="{% url 'p_details' %}">DashBoard</a>
+            </div>
+            <div>
+                <a href="{% url 'admin:index' %}" target="_blank" class="btn btn-success">Admin</a>
+            </div>
+        </div>
+        
+    </div>
+</nav>
+

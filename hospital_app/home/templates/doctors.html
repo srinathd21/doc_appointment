@@ -1,0 +1,50 @@
+{% include 'header.html' %}
+{% load static %}
+<div>
+    {% include 'navbar.html' %}
+</div>
+<style>
+#cbtn{
+            background-color: rgb(90, 151, 168);
+            color: white;
+            padding: 7px;
+            border-radius: 10px;
+            border: none;
+        }
+    #card{
+        text-decoration: none;
+    }
+    #qul{
+        font-size: 10px;
+        color: gray;
+    }
+    #cp{
+            color: rgb(40, 120, 142);
+            margin-bottom: 5px;
+            font-size: 15px;
+    }
+</style>
+<div class="container">
+    <h1>{{category_type}}</h1>
+    <div class="row mt-5 border p-4">
+        {% for item in doctors %}
+    
+        <div class="col-lg-3 col-md-4 mb-3">
+            <a href="{% url 'Create_profile' item.name %}" id="card" class="card" style="width:260px; height: 400px; ">
+                <img class="card-img-top" src="{{item.doc_image.url}}" alt="Card image" style="width:65%; margin: 0px auto;">
+                <div class="card-body" style="margin-top: -20px;">
+                    <h4 class="card-title text-center">{{item.name}} <span id="qul">{{item.qulification}}</span></h4>
+                    <p id="cp" class="card-text">{{item.special}}</p>
+                    <p id="cp" class="card-text">Language: {{item.languages}}</p>
+                    <p id="cp" class="card-text">Date: {{item.avel_dates}}</p>
+                    <p id="cp" class="card-text">Time: {{item.in_out_time}}</p>
+                </div>
+                <div class="text-center">
+                    <button id="cbtn" class="mb-2">Book Appointment</button>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    
+    </div></h1>
+</div>

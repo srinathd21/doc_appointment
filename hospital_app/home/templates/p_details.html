@@ -1,0 +1,94 @@
+{% include 'header.html' %}
+{% load static %}
+<div>
+    {% include 'navbar.html' %}
+</div>
+
+<title>Patient Details</title>
+
+<div class="container">
+    <table class="table mt-3">
+        <tr>
+           
+            <th>S.No</th>
+            <th>Name</th>
+            <th>F/H</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Contact</th>
+            <th>Describe</th>
+            <th>Status</th>
+        </tr>
+        {% for pd in patients %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{pd.name}}</td>
+            <td>{{pd.fh}}</td>
+            <td>{{pd.age}}</td>
+            <td>{{pd.gender}}</td>
+            <td>{{pd.contact}}</td>
+            <td>{{pd.description}}</td>
+            <td><a style="margin-right: 5px;" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">Complete</a><a class="btn btn-primary" href="">Pending</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Prescription</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form action="" class="p-4" method="post">
+                {% csrf_token %}
+                {% for patient in patients %}
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Doctor:</td>
+                        <td><input type="text" class="form-control" name="doctor" value="{{patient.doctor}}" ></td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" class="form-control" name="name" value="{{patient.name}}" ></td>
+                    </tr>
+                    <tr>
+                        <td>Father/ Husband:</td>
+                        <td><input type="text" class="form-control" name="fh" value="{{patient.fh}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Next Date:</td>
+                        <td><input type="text" class="form-control" placeholder="" name="date" required></td>
+                    </tr>
+                    <tr>
+                        <td>Description:</td>
+                        <td><input type="text" name="des" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <td>Prescription:</td>
+                        <td><textarea type="text" cols="5" name="prs" class="form-control" required></textarea></td>
+                    </tr>
+            
+                </table>
+                {% endfor %}
+                <div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+
+</div>
