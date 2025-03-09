@@ -7,5 +7,5 @@ This project is a Doctor Appointment Booking System built using Django and SQLit
 ✅ User Registration & Login
 ✅ Doctor Listing: Users can browse available doctors.
 ✅ Appointment Booking: Users can book an appointment with a selected doctor.
-✅ Responsive UI: Built with HTML, CSS, Bootstrap.
+✅ Built with HTML, CSS, Bootstrap.
 ✅ Database: Uses SQLite3 for data storage.
